@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-books
+      author: urgmaker
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column:
+                  name: title
+                  value: Effective Java
+              - column:
+                  name: author
+                  value: Joshua Bloch
+              - column:
+                  name: year
+                  value: 2018
+              - column:
+                  name: title
+                  value: Java Projects
+              - column:
+                  name: author
+                  value: Peter Verhas
+              - column:
+                  name: year
+                  value: 2017

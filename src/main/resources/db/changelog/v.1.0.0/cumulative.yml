@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: create-table-books.yml
+      relativeToChangelogFile: true
+  - include:
+      file: insert-books.yml
+      relativeToChangelogFile: true
