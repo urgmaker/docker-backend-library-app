@@ -41,7 +41,7 @@ public class BookRestController {
         return ResponseEntity.of(this.bookRepository.findById(id));
     }
 
-    @GetMapping("{author}")
+    @GetMapping("/authors/{author}")
     public ResponseEntity<List<Book>> handleFindByAuthor(@PathVariable("author") String author) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -61,7 +61,8 @@ public class BookRestController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(new ErrorsPresentation(List.of(message)));
         } else {
-            Book book = new Book(bookDto.getTitle(), bookDto.getAuthor(), bookDto.getYear());
+            bookDto.setId(UUID.randomUUID());
+            Book book = new Book(bookDto.getId(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getYear());
             this.bookRepository.save(book);
             return ResponseEntity.created(uriComponentsBuilder.path("/api/books/{bookId}").build(Map.of("bookId", book.getId())))
                     .contentType(MediaType.APPLICATION_JSON)
