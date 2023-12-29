@@ -35,6 +35,11 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>2.2</version>
+        </dependency>
         <!--DEV-TOOLS-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
