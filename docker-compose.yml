@@ -1,0 +1,9 @@
+services:
+  db_pg:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: sandbox
+      POSTGRES_USER: sandbox_user
+      POSTGRES_PASSWORD: sandbox_password
+    ports:
+      - 5432

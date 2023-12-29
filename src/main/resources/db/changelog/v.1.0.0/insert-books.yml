@@ -15,6 +15,13 @@ databaseChangeLog:
               - column:
                   name: year
                   value: 2018
+  - changeSet:
+      id: insert-books-2
+      author: urgmaker
+      changes:
+        - insert:
+            tableName: books
+            columns:
               - column:
                   name: title
                   value: Java Projects
@@ -23,4 +30,4 @@ databaseChangeLog:
                   value: Peter Verhas
               - column:
                   name: year
-                  value: 2017
+                  value: 2005

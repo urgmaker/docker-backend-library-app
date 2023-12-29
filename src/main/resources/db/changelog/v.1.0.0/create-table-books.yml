@@ -12,6 +12,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     nullable: false
+                  defaultValueComputed: gen_random_uuid()
               - column:
                   name: title
                   type: varchar(100)
