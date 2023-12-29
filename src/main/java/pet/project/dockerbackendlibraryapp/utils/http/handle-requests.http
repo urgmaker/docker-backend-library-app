@@ -1,0 +1,20 @@
+###
+GET http://localhost:8080/api/books
+
+###
+@id =478fcc66-d899-49b0-b465-e50b8625206b
+GET http://localhost:8080/api/books/{{id}}
+
+###
+@author =Joshua Bloch
+GET http://localhost:8080/api/books/authors/{{author}}
+
+###
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Test book",
+  "author": "Test author",
+  "year": "2000"
+}
