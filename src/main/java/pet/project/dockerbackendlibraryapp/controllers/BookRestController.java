@@ -9,35 +9,35 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import pet.project.dockerbackendlibraryapp.dto.BookDto;
 import pet.project.dockerbackendlibraryapp.model.Book;
-import pet.project.dockerbackendlibraryapp.repository.BookRepositoryImpl;
+import pet.project.dockerbackendlibraryapp.repository.BookRepository;
 import pet.project.dockerbackendlibraryapp.utils.ErrorsPresentation;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/books")
 public class BookRestController {
-    private final BookRepositoryImpl bookRepository;
+    private final BookRepository bookRepository;
     private final MessageSource messageSource;
 
     @Autowired
-    public BookRestController(BookRepositoryImpl bookRepository, MessageSource messageSource) {
+    public BookRestController(BookRepository bookRepository, MessageSource messageSource) {
         this.bookRepository = bookRepository;
         this.messageSource = messageSource;
     }
+
 
     @GetMapping
     public ResponseEntity<List<Book>> handleGetAllBooks() {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(this.bookRepository.findAll());
+                .body((List<Book>) this.bookRepository.findAll());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Book> handleFindById(@PathVariable("id") UUID id) {
+    public ResponseEntity<Book> handleFindById(@PathVariable("id") Long id) {
         return ResponseEntity.of(this.bookRepository.findById(id));
     }
 
@@ -61,8 +61,7 @@ public class BookRestController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(new ErrorsPresentation(List.of(message)));
         } else {
-            bookDto.setId(UUID.randomUUID());
-            Book book = new Book(bookDto.getId(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getYear());
+            Book book = new Book(bookDto.getTitle(), bookDto.getAuthor(), bookDto.getYear());
             this.bookRepository.save(book);
             return ResponseEntity.created(uriComponentsBuilder.path("/api/books/{bookId}").build(Map.of("bookId", book.getId())))
                     .contentType(MediaType.APPLICATION_JSON)

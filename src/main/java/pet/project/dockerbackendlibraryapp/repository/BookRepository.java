@@ -1,19 +1,15 @@
 package pet.project.dockerbackendlibraryapp.repository;
 
+import org.springframework.data.jdbc.repository.query.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pet.project.dockerbackendlibraryapp.model.Book;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Repository
-public interface BookRepository {
-    List<Book> findAll();
-
-    void save(Book book);
-
-    Optional<Book> findById(UUID id);
-
-    List<Book> findByAuthor(String author);
+public interface BookRepository extends CrudRepository<Book, Long> {
+    @Query("SELECT * FROM book WHERE book.author = :author")
+    List<Book> findByAuthor(@Param("author") String author);
 }
