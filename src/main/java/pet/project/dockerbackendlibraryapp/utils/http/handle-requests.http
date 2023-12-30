@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/books
 
 ###
-@id =478fcc66-d899-49b0-b465-e50b8625206b
+@id =2
 GET http://localhost:8080/api/books/{{id}}
 
 ###

@@ -1,18 +1,18 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table-books
+      id: create-table-book
       author: urgmaker
       changes:
         - createTable:
-            tableName: books
+            tableName: book
             columns:
               - column:
                   name: id
-                  type: uuid
+                  type: serial
                   constraints:
                     primaryKey: true
                     nullable: false
-                  defaultValueComputed: gen_random_uuid()
+                  autoIncrement: true
               - column:
                   name: title
                   type: varchar(100)
@@ -25,6 +25,6 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: year
-                  type: int
+                  type: integer
                   constraints:
                     nullable: false

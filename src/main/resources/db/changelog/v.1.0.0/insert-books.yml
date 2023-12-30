@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: insert-books
+      id: insert-data-1
       author: urgmaker
       changes:
         - insert:
-            tableName: books
+            tableName: book
             columns:
               - column:
                   name: title
@@ -16,11 +16,11 @@ databaseChangeLog:
                   name: year
                   value: 2018
   - changeSet:
-      id: insert-books-2
+      id: insert-data-2
       author: urgmaker
       changes:
         - insert:
-            tableName: books
+            tableName: book
             columns:
               - column:
                   name: title

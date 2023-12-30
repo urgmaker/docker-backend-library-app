@@ -20,7 +20,7 @@
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
     </properties>
     <dependencies>
-        <!--JPA-->
+        <!--JDBC-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
